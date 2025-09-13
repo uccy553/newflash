@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 200 17% 93%; /* #ecf0f1 soft gray */
+    --foreground: 222.2 84% 4.9%; /* Default dark for text */
+
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 207 68% 53%; /* #3498db calming blue */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 210 40% 96.1%; /* shadcn light gray */
+    --secondary-foreground: 222.2 84% 4.9%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 20.2% 65.1%; /* Lighter gray for muted text */
+
+    --accent: 145 63% 49%; /* #2ecc71 green */
+    --accent-foreground: 0 0% 100%; /* white */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 207 68% 53%; /* primary blue for focus rings */
+
+    --radius: 0.5rem;
+
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Sidebar specific colors - can be adjusted if needed, defaults are fine for now */
+    --sidebar-background: 240 5.9% 10%; /* Darker for contrast if sidebar is dark theme like */
+    /* Or for light theme sidebar: */
+    /* --sidebar-background: 0 0% 98%; */
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 207 68% 53%; /* Use app primary */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 63% 49%; /* Use app accent */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 207 68% 53%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 207 68% 53%; /* #3498db calming blue */
+    --primary-foreground: 0 0% 100%; /* white */
+    
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 145 63% 49%; /* #2ecc71 green */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 207 68% 53%; /* primary blue for focus rings */
+    
+    /* Sidebar specific colors for dark theme */
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 207 68% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 63% 49%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 207 68% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

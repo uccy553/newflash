@@ -1,0 +1,48 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can read and write their own user profile document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    // Users can read and write (update, delete, set with ID) their own specific flashcards
+    match /users/{userId}/flashcards/{flashcardId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    // Users can list their own flashcards and create new flashcards
+    match /users/{userId}/flashcards { // Path to the flashcards collection
+      allow list, create: if request.auth != null && request.auth.uid == userId;
+    }
+    // Users can read and write (update, delete, set with ID) their own specific quiz history entries (for Due Cards Review)
+    match /users/{userId}/quizHistory/{quizEntryId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    // Users can list their own quiz history and create new quiz history entries
+     match /users/{userId}/quizHistory { // Path to the quizHistory collection
+        allow list, create: if request.auth != null && request.auth.uid == userId;
+    }
+    // Notes: Users can manage their own notes
+    match /users/{userId}/notes/{noteId} {
+      allow read, write, delete: if request.auth != null && request.auth.uid == userId;
+    }
+    match /users/{userId}/notes {
+      allow list, create, get: if request.auth != null && request.auth.uid == userId;
+    }
+    // Generated Quizzes (from AI Quiz Generator)
+    match /users/{userId}/generatedQuizzes/{quizId} {
+      allow read, write, delete: if request.auth != null && request.auth.uid == userId;
+    }
+    match /users/{userId}/generatedQuizzes {
+      allow list, create: if request.auth != null && request.auth.uid == userId;
+    }
+    // Activity Log for Streaks
+    match /users/{userId}/activityLog/{logId} { // For individual log entries (YYYY-MM-DD)
+      allow read, write: if request.auth != null && request.auth.uid == userId; // 'write' covers create and update for setDoc
+    }
+    match /users/{userId}/activityLog { // For the collection itself
+      allow list: if request.auth != null && request.auth.uid == userId; // For getRecentActivityLogs
+    }
+  }
+}
